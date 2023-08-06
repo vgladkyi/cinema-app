@@ -2,9 +2,9 @@ package cinema.controller;
 
 import cinema.dto.request.UserRequestDto;
 import cinema.dto.response.UserResponseDto;
+import cinema.mapper.ResponseDtoMapper;
 import cinema.model.User;
 import cinema.service.AuthenticationService;
-import cinema.service.mapper.ResponseDtoMapper;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +22,8 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public UserResponseDto register(@RequestBody @Valid UserRequestDto requestDto) {
+    public UserResponseDto register(@RequestBody @Valid
+                                        UserRequestDto requestDto) {
         User user = authService.register(requestDto.getEmail(), requestDto.getPassword());
         return userDtoResponseMapper.mapToDto(user);
     }
