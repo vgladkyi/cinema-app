@@ -2,10 +2,10 @@ package cinema.controller;
 
 import cinema.dto.request.CinemaHallRequestDto;
 import cinema.dto.response.CinemaHallResponseDto;
+import cinema.mapper.RequestDtoMapper;
+import cinema.mapper.ResponseDtoMapper;
 import cinema.model.CinemaHall;
 import cinema.service.CinemaHallService;
-import cinema.service.mapper.RequestDtoMapper;
-import cinema.service.mapper.ResponseDtoMapper;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +30,8 @@ public class CinemaHallController {
     }
 
     @PostMapping
-    public CinemaHallResponseDto add(@RequestBody @Valid CinemaHallRequestDto requestDto) {
+    public CinemaHallResponseDto add(@RequestBody @Valid
+                                         CinemaHallRequestDto requestDto) {
         CinemaHall cinemaHall = cinemaHallService.add(
                 cinemaHallRequestDtoMapper.mapToModel(requestDto));
         return cinemaHallResponseDtoMapper.mapToDto(cinemaHall);
