@@ -38,8 +38,7 @@ public class ShoppingCartController {
 
     @PutMapping("/movie-sessions")
     public void addToCart(Authentication auth,
-                          @RequestParam
-                          Long movieSessionId) {
+                          @RequestParam Long movieSessionId) {
         UserDetails details = (UserDetails) auth.getPrincipal();
         String email = details.getUsername();
         User user = userService.findByEmail(email).orElseThrow(
